@@ -26,27 +26,40 @@ class VirtualTryOnAgent:
             if guidance_scale is None:
                 guidance_scale = VTON_GUIDANCE_SCALE
 
-            # 调用虚拟试穿函数
+            # 构建garment_info字典，符合flux_vton.py中run_vton函数的预期格式
+            garment_info = {
+                "category": "upper_body",  # 默认类别，可以根据实际情况调整
+                "prompt": clothing_description if clothing_description else "简约风格的服装",
+                "garments": [{
+                    "id": 0,
+                    "path": clothing_image_path
+                }]
+            }
+
+            # 调用虚拟试穿函数，使用正确的参数
             result = run_vton(
-                person_image=person_image_path,
-                garment_image=clothing_image_path,
-                garment_description=clothing_description,
-                iterations=iterations,
-                guidance_scale=guidance_scale
+                garment_info=garment_info,
+                human_image_path=person_image_path,
+                gender="female"  # 默认性别，可以根据实际情况调整
             )
 
             # 检查结果
-            if not result or "result_image" not in result:
+            if not result or "vton_results" not in result or not result["vton_results"]:
                 print(f"虚拟试穿失败: 未返回有效结果")
                 return {"success": False, "error": "虚拟试穿失败"}
 
-            print(f"虚拟试穿成功，生成了 {len(result['iteration_results'])} 个中间结果")
+            # 获取最佳结果
+            best_vton_result = result["vton_results"][0]
+            result_image_path = best_vton_result["vton_path"]
+            score = best_vton_result["score"]
+
+            print(f"虚拟试穿成功，最佳结果评分: {score}")
             return {
                 "success": True,
-                "result_image": result["result_image"],
-                "iteration_results": result["iteration_results"],
-                "clip_scores": result["clip_scores"],
-                "best_iteration": result["best_iteration"]
+                "result_image": result_image_path,
+                "iteration_results": [result_image_path],  # 简化处理，只返回最佳结果
+                "clip_scores": [score],  # 简化处理，只返回最佳评分
+                "best_iteration": 0
             }
         except Exception as e:
             print(f"执行虚拟试穿时出错: {e}")

@@ -10,7 +10,7 @@ from agents.style_agent import StyleAgent
 from agents.clothing_recommendation_agent import ClothingRecommendationAgent
 from agents.virtual_try_on_agent import VirtualTryOnAgent
 from utils.need2text import get_need2text, get_addition_need2text
-from utils.text2garment import description_to_garment
+from utils.model_based_text2garment import description_to_garment
 from utils.flux_vton import run_vton
 from utils.metrics import VQAScore, ClipScore
 from utils.image_process import image_process

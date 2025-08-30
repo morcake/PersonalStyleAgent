@@ -2,7 +2,7 @@ import os
 import json
 from typing import Dict, List, Optional, Union
 from utils.need2text import get_need2text, get_addition_need2text
-from utils.text2garment import description_to_garment
+from utils.model_based_text2garment import description_to_garment
 from utils.flux_vton import run_vton
 from utils.search import search_clothing_items
 from utils.metrics import VQAScore, ClipScore

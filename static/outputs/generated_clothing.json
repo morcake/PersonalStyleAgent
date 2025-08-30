@@ -1,0 +1,24 @@
+{
+  "category": "dresses",
+  "prompt": "一款淡雅的粉色轻盈雪纺连衣裙，采用柔软细腻的雪纺材质，裙身飘逸流畅，领口为简洁的圆领设计，腰部略显收紧，营造出柔和的A字型版型，裙摆处自然垂落，增加层次感，适合春秋季穿着，整体风格清新淡雅",
+  "garments": [
+    {
+      "id": 0,
+      "path": "/home/wtu/Documents/masstil/PersonalStyleAgent/static/garments/dresses_-3118132/garment_0_2.png",
+      "score": 0.1,
+      "relative_path": "garments/dresses_-3118132/garment_0_2.png"
+    },
+    {
+      "id": 1,
+      "path": "/home/wtu/Documents/masstil/PersonalStyleAgent/static/garments/dresses_-3118132/garment_2_2.png",
+      "score": 0.1,
+      "relative_path": "garments/dresses_-3118132/garment_2_2.png"
+    },
+    {
+      "id": 2,
+      "path": "/home/wtu/Documents/masstil/PersonalStyleAgent/static/garments/dresses_-3118132/garment_0_0.png",
+      "score": 0.0,
+      "relative_path": "garments/dresses_-3118132/garment_0_0.png"
+    }
+  ]
+}
